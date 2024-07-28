@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Playwrite+HU:wght@100..400&display=swap");
+
+* {
+  font-family: "Noto Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#btns h2 {
+  color: white;
+  font-weight: 500;
+}
+
+#btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  margin-top: -17px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+#btns h2 {
+  margin: 0;
+}
+
+#btns .nav-btn,
+#btns .auth {
+  display: flex;
+  gap: 1rem;
+}
+
+#btns .b1 {
+  position: relative;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  overflow: hidden; /* Ensures underline does not go outside button */
+}
+
+#btns .b1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ff6347;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease;
+}
+
+#btns .b1:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+#container {
+  padding: 1rem;
+  width: 100%;
+}
+
+.auth .b1 {
+  background-color: #0056b3;
+}
+
+.auth .b2 {
+  background-color: rgb(187, 11, 11);
+}
+
+#logins {
+  /* background-image: url("./images/login.png"); */
+  background-image: url("../images//login.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* Dropdown styling */
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #333;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 0;
+  width: max-content;
+}
+
+.dropdown button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.dropdown button:hover {
+  background-color: #444;
+  color: #ff6347;
+}

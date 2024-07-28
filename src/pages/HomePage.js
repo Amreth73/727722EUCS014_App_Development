@@ -14,38 +14,40 @@ import Register from "../components/Register";
 
 function Homepage() {
   return (
-    <Container maxW="xl" centerContent>
-      <Box
-        d="flex"
-        justifyContent="center"
-        p={3}
-        bg="white"
-        w="100%"
-        m="40px 0 15px 0"
-        borderRadius="lg"
-        borderWidth="1px"
-      >
-        <Text fontSize="4xl" fontFamily="Work sans">
-          Under Discussion
-        </Text>
-      </Box>
-      <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
-        <Tabs isFitted variant="soft-rounded">
-          <TabList mb="1em">
-            <Tab>Login</Tab>
-            <Tab>Sign Up</Tab>
-          </TabList>
-          <TabPanels>
-            <TabPanel>
-              <LoginPage />
-            </TabPanel>
-            <TabPanel>
-              <Register />
-            </TabPanel>
-          </TabPanels>
-        </Tabs>
-      </Box>
-    </Container>
+    <div id="logins">
+      <Container maxW="xl" centerContent>
+        <Box
+          d="flex"
+          justifyContent="center"
+          p={3}
+          bg="white"
+          w="100%"
+          m="40px 0 15px 0"
+          borderRadius="lg"
+          borderWidth="1px"
+        >
+          <Text fontSize="4xl" fontFamily="Work sans">
+            PartyPerfect
+          </Text>
+        </Box>
+        <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
+          <Tabs isFitted variant="soft-rounded">
+            <TabList mb="1em">
+              <Tab>Login</Tab>
+              <Tab>Sign Up</Tab>
+            </TabList>
+            <TabPanels>
+              <TabPanel>
+                <LoginPage />
+              </TabPanel>
+              <TabPanel>
+                <Register />
+              </TabPanel>
+            </TabPanels>
+          </Tabs>
+        </Box>
+      </Container>
+    </div>
   );
 }
 
