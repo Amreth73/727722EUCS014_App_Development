@@ -1,0 +1,120 @@
+.admin-dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid #444;
+}
+
+.sidebar ul li:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+.main-content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.main-content header {
+  background-color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.dashboard-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.2em;
+  min-height: 100px;
+}
+
+.dashboard-item h3 {
+  margin: 0;
+}
+
+/* Updated color gradients */
+.green {
+  background: linear-gradient(180deg, #34eb86, #28b463);
+}
+
+.pink {
+  background: linear-gradient(180deg, #ff669a, #ff3366);
+}
+
+.orange {
+  background: linear-gradient(180deg, #ffa31a, #ff751a);
+}
+
+.blue {
+  background: linear-gradient(180deg, #3399ff, #3366ff);
+}
+
+.purple {
+  background: linear-gradient(180deg, #b366ff, #8000ff);
+}
+
+.yellow {
+  background: linear-gradient(180deg, #ffdb4d, #ffcc00);
+}
+
+.red {
+  background: linear-gradient(180deg, #ff4d4d, #cc0000);
+}
+
+.teal {
+  background: linear-gradient(180deg, #33cccc, #009999);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .main-content {
+    margin-bottom: 200px; /* Height of the sidebar */
+  }
+}

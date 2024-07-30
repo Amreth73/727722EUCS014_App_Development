@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./navbar.css";
 import { useNavigate } from "react-router-dom";
+
 const Navbar = () => {
   const [serviceDropdown, setServiceDropdown] = useState(false);
   const [blogDropdown, setBlogDropdown] = useState(false);
+  const [auth, setAuth] = useState(false);
 
   const handleMouseEnter = (setDropdown) => {
     setDropdown(true);
@@ -72,10 +74,10 @@ const Navbar = () => {
           onMouseEnter={() => handleMouseEnter(setBlogDropdown)}
           onMouseLeave={() => handleMouseLeave(setBlogDropdown)}
         >
-          <button className="b1" onClick={() => submit1("/blog")}>
-            Blog
+          <button className="b1" onClick={() => submit1("/venue")}>
+            Venue
           </button>
-          {blogDropdown && (
+          {/* {blogDropdown && (
             <div className="dropdown">
               <button onClick={() => submit1("/blog/subblog1")}>
                 subblog1
@@ -87,7 +89,7 @@ const Navbar = () => {
                 Subblog 3
               </button>
             </div>
-          )}
+          )} */}
         </div>
         <div>
           <button className="b1" onClick={() => submit1("/contact")}>
@@ -95,12 +97,25 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      <div className="auth">
-        <div onClick={() => submit1("/home")}>
-          <button className="b1">Register</button>
-        </div>
-        <div>
-          <button className="b1 b2">Log out</button>
+      <div
+        className="dropdown-container"
+        onMouseEnter={() => handleMouseEnter(setAuth)}
+        onMouseLeave={() => handleMouseLeave(setAuth)}
+      >
+        <div className="auth">
+          <div onClick={() => submit1("/home")}>
+            <button className="b1">Login</button>
+          </div>
+          {auth && (
+            <div className="dropdown">
+              <button onClick={() => submit1("/home")} className="log">
+                Login as user
+              </button>
+              <button onClick={() => submit1("/admin-login")} className="log">
+                Login as admin
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>

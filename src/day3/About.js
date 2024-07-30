@@ -20,7 +20,9 @@ const About = () => {
   const submit1 = (path) => {
     navigate(path);
   };
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

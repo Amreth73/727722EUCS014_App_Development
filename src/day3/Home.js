@@ -1,11 +1,38 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./home.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
+
 const Home = () => {
   const navigate = useNavigate();
   const sectionsRef = useRef([]);
+  const [isVisible, setIsVisible] = useState(false);
+  const textRef = useRef(null);
+  const imageRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        } else {
+          setIsVisible(false);
+        }
+      },
+      {
+        threshold: 0.1, // Adjust the threshold as needed
+      }
+    );
+
+    if (textRef.current) observer.observe(textRef.current);
+    if (imageRef.current) observer.observe(imageRef.current);
+
+    return () => {
+      if (textRef.current) observer.unobserve(textRef.current);
+      if (imageRef.current) observer.unobserve(imageRef.current);
+    };
+  }, []);
 
   const submit1 = (path) => {
     navigate(path);
@@ -34,13 +61,13 @@ const Home = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("animate");
+            entry.target.classList.add("animate-slideIn");
           } else {
-            entry.target.classList.remove("animate");
+            entry.target.classList.remove("animate-slideIn");
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.2 }
     );
 
     sectionsRef.current.forEach((section) => {
@@ -72,19 +99,109 @@ const Home = () => {
         </div>
       </div>
       <div className="content">
-        <section ref={(el) => (sectionsRef.current[0] = el)} className="intro">
+        <div ref={(el) => (sectionsRef.current[0] = el)} className="intro">
           <h2>Welcome to Perfect Party</h2>
-          <p>
-            At Perfect Party, we turn your dream events into reality. Whether
-            it’s a birthday celebration, a wedding, a corporate event, or any
-            other special occasion, our dedicated team is here to make it
-            unforgettable.
-          </p>
-        </section>
-        <section
-          ref={(el) => (sectionsRef.current[1] = el)}
-          className="services"
-        >
+          <div className="con-img">
+            <p
+              ref={textRef}
+              className={`animated-text ${isVisible ? "animate" : ""}`}
+            >
+              At Perfect Party, we turn your dream events into reality. Whether
+              it’s a birthday celebration, a wedding, a corporate event, or any
+              other special occasion, our dedicated team is here to make it
+              unforgettable. We pride ourselves on crafting unique and
+              personalized experiences tailored to your vision. From the moment
+              you contact us, we dive into understanding your goals and
+              preferences, ensuring that every detail is meticulously planned
+              and executed. Our expertise spans across various aspects of event
+              management, including venue selection, decoration, catering, and
+              entertainment. With a focus on creativity and precision, we
+              transform your ideas into stunning realities, creating events that
+              captivate and impress.
+            </p>
+            <img
+              src="./home1.png"
+              ref={imageRef}
+              className={`animated-image ${isVisible ? "animate" : ""}`}
+              alt="Event"
+            />
+          </div>
+          <div className="con-img">
+            <img
+              src="./home2.png"
+              ref={imageRef}
+              className={`animated-image ${isVisible ? "animate" : ""}`}
+              alt="Event"
+            />
+            <p
+              ref={textRef}
+              className={`animated-text ${isVisible ? "animate" : ""}`}
+            >
+              We understand that every event is a reflection of your personality
+              and desires. That's why we work closely with you to understand
+              your needs and preferences, ensuring that every aspect of your
+              event is tailored to your vision. From the initial planning stages
+              to the final execution, our team is committed to delivering a
+              seamless and stress-free experience. We offer a comprehensive
+              range of services, including venue selection, decoration,
+              catering, and entertainment, all meticulously designed to suit
+              your requirements and exceed your expectations. Our expertise
+              extends to handling all the intricate details, allowing you to
+              relax and enjoy your event, knowing that everything is being
+              managed with precision and care. With our dedication to excellence
+              and personalized service.
+            </p>
+          </div>
+          <div className="con-img">
+            <p
+              ref={textRef}
+              className={`animated-text ${isVisible ? "animate" : ""}`}
+            >
+              Here's an expanded version of the paragraph: Our team of
+              experienced professionals is passionate about bringing your ideas
+              to life. With years of experience in the event management
+              industry, we have the expertise to handle events of all sizes and
+              complexities. Whether you’re planning an intimate gathering, a
+              grand celebration, or an elaborate corporate function, we ensure
+              that every aspect is meticulously organized and executed with
+              precision. Our attention to detail and commitment to excellence
+              guarantee that every event is not only smoothly run but also
+              unforgettable, leaving a lasting impression on your guests. From
+              the initial concept to the final execution.
+            </p>
+            <img
+              src="./home3.png"
+              ref={imageRef}
+              className={`animated-image ${isVisible ? "animate" : ""}`}
+              alt="Event"
+            />
+          </div>
+          <div className="con-img">
+            <img
+              src="./home4.png"
+              ref={imageRef}
+              className={`animated-image ${isVisible ? "animate" : ""}`}
+              alt="Event"
+            />
+            <p
+              ref={textRef}
+              className={`animated-text ${isVisible ? "animate" : ""}`}
+            >
+              Here's an expanded version of the paragraph: Our team of
+              experienced professionals is passionate about bringing your ideas
+              to life. With years of experience in the event management
+              industry, we have the expertise to handle events of all sizes and
+              complexities. Whether you’re planning an intimate gathering, a
+              grand celebration, or an elaborate corporate function, we ensure
+              that every aspect is meticulously organized and executed with
+              precision. Our attention to detail and commitment to excellence
+              guarantee that every event is not only smoothly run but also
+              unforgettable, leaving a lasting impression on your guests. From
+              the initial concept to the final execution.
+            </p>
+          </div>
+        </div>
+        <div ref={(el) => (sectionsRef.current[1] = el)} className="services">
           <h2>Our Services</h2>
           <ul>
             <li>
@@ -123,7 +240,7 @@ const Home = () => {
               </p>
             </li>
           </ul>
-        </section>
+        </div>
         <div className="background-container">
           <div className="overlay1">
             <h1>FIND THE PERFECT VENUE</h1>
@@ -134,7 +251,7 @@ const Home = () => {
             <button id="search">Search Venues</button>
           </div>
         </div>
-        <section
+        <div
           ref={(el) => (sectionsRef.current[2] = el)}
           className="testimonials"
         >
@@ -155,16 +272,15 @@ const Home = () => {
             </p>
             <p>- Mark, CEO of XYZ Corp</p>
           </div>
-        </section>
-
-        <section ref={(el) => (sectionsRef.current[3] = el)} className="cta">
+        </div>
+        <div ref={(el) => (sectionsRef.current[3] = el)} className="cta">
           <h2>Ready to Plan Your Perfect Event?</h2>
           <p>
             Contact us today to start planning your unforgettable event with
             Perfect Party.
           </p>
           <button onClick={() => submit1("/contact")}>Get in Touch</button>
-        </section>
+        </div>
       </div>
       <Footer />
     </>

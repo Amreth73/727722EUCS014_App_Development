@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import "./service.css";
+import Statistics from "./Statistics";
 
 const Service = () => {
   const navigate = useNavigate();
@@ -106,7 +107,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service1.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Birthday Parties</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Birthday Parties
+            </h2>
             <p className="card-description">
               Celebrate your special day with our expert planning services,
               covering everything from decorations to catering for a stress-free
@@ -123,7 +126,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service5.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Corporate Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Corporate Events
+            </h2>
             <p className="card-description">
               Our corporate events service offers tailored planning and seamless
               execution for conferences, seminars, and corporate gatherings,
@@ -140,7 +145,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service3.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Weddings</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Weddings
+            </h2>
             <p className="card-description">
               Expertly planned weddings with personalized touches, seamless
               coordination, and unforgettable moments, ensuring your special day
@@ -154,7 +161,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service4.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Public Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Public Events
+            </h2>
             <p className="card-description">
               Expertly planned weddings with personalized touches, seamless
               coordination, and unforgettable moments, ensuring your special day
@@ -173,7 +182,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service6.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Educational Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Educational Events
+            </h2>
             <p className="card-description">
               Educational Events: Expertly organized conferences, workshops, and
               seminars that inspire learning, foster networking, and promote
@@ -190,7 +201,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service7.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Charity Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Charity Events
+            </h2>
             <p className="card-description">
               Organize impactful charity events with us, from concept to
               execution, ensuring seamless planning, engaging experiences, and
@@ -204,7 +217,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service8.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Sports Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Sports Events
+            </h2>
             <p className="card-description">
               Organize seamless sports events with our expert management
               services, offering coordination, logistics, and support for
@@ -218,7 +233,9 @@ const Service = () => {
         <div className="card-container">
           <div className="card">
             <img src="./service10.png" alt="Event" className="card-image" />
-            <h2 className="card-title">Cultural Events</h2>
+            <h2 className="card-title" style={{ color: "#ff6347" }}>
+              Cultural Events
+            </h2>
             <p className="card-description">
               Organizing vibrant cultural events that celebrate diversity,
               heritage, and traditions through music, dance, art, and

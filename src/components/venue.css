@@ -1,0 +1,158 @@
+.venue {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.venue:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.venue h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  color: #ff6347;
+}
+
+.venue p {
+  font-size: 1.1em;
+  color: #666;
+  line-height: 1.8;
+}
+
+.venue a {
+  color: #ff7e5f;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+}
+
+.venue a:hover {
+  border-bottom: 2px solid #ff7e5f;
+}
+
+.venue-details {
+  margin-bottom: 30px;
+}
+
+.venue-details h2 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #555;
+  font-weight: 600;
+}
+
+.venue-details p {
+  margin: 10px 0;
+}
+
+.detail-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.venue-images {
+  margin-top: 30px;
+}
+
+ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+ul li {
+  margin: 8px 0;
+  color: #666;
+}
+
+.venue-images .imageSlides {
+  display: none;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.venue-images .imageSlides.visible {
+  display: block;
+  opacity: 1;
+}
+
+.venue-images img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.venue-images img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slideshow-container {
+  position: relative;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  user-select: none;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+
+#leftArrow {
+  left: 10px;
+}
+.larrow {
+  width: 60px;
+}
+#rightArrow {
+  right: 10px;
+}
+
+.dots-container {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.circle {
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.3s, transform 0.3s;
+  cursor: pointer;
+}
+
+.circle:hover {
+  transform: scale(1.2);
+}
+
+.dot {
+  background-color: #717171;
+}

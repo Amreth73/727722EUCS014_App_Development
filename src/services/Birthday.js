@@ -2,11 +2,16 @@ import React from "react";
 import Navbar from "../day3/Navbar";
 import Footer from "../day3/Footer";
 import "./birthday.css";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { usePrice } from "../day3/PriceProvider";
 
 const Birthday = () => {
+  const navigate = useNavigate();
+  const { setPrice } = usePrice();
+  const handlePay = (price) => {
+    setPrice(price);
+    navigate("/payment");
+  };
   return (
     <div>
       <Navbar />
@@ -16,7 +21,7 @@ const Birthday = () => {
           <h1 className="heading1">Birthday Parties</h1>
         </header>
 
-        <section className="birthday-parties-content">
+        <div className="birthday-parties-content">
           <div className="content-section1">
             <h2 className="heading2">What We Do</h2>
             <p className="paragraph1">
@@ -84,9 +89,9 @@ const Birthday = () => {
               options, we offer a variety of services to meet your needs.
             </p>
           </div>
-        </section>
+        </div>
 
-        <section className="recent-works">
+        <div className="recent-works">
           <h2 className="recent-works-heading">Our Recent Works</h2>
           <div className="recent-works-gallery">
             <div className="recent-work-item">
@@ -97,7 +102,7 @@ const Birthday = () => {
               />
               <div className="recent-work-text">
                 <h3>Work Title 1</h3>
-                <p>Description of recent work 1</p>
+                <h1>Description of recent work 1</h1>
               </div>
             </div>
             <div className="recent-work-item">
@@ -108,7 +113,7 @@ const Birthday = () => {
               />
               <div className="recent-work-text">
                 <h3>Work Title 2</h3>
-                <p>Description of recent work 2</p>
+                <h1>Description of recent work 2</h1>
               </div>
             </div>
             <div className="recent-work-item">
@@ -119,11 +124,11 @@ const Birthday = () => {
               />
               <div className="recent-work-text">
                 <h3>Work Title 3</h3>
-                <p>Description of recent work 3</p>
+                <h1>Description of recent work 3</h1>
               </div>
             </div>
           </div>
-        </section>
+        </div>
 
         <div className="birthday-parties-pricing">
           <div className="service-heading">
@@ -143,6 +148,9 @@ const Birthday = () => {
                 <li>✅ 2 Hours of Entertainment</li>
               </ul>
               <p className="card-price">$500</p>
+              <button className="pay-btn" onClick={() => handlePay(500)}>
+                Pay Now
+              </button>
             </div>
             <div className="pricing-card2">
               <h3 className="card-title">Standard Package</h3>
@@ -158,6 +166,9 @@ const Birthday = () => {
                 <li>✅ Photography</li>
               </ul>
               <p className="card-price">$800</p>
+              <button className="pay-btn" onClick={() => handlePay(800)}>
+                Pay Now
+              </button>
             </div>
             <div className="pricing-card3">
               <h3 className="card-title">Premium Package</h3>
@@ -173,7 +184,12 @@ const Birthday = () => {
                 <li>✅ Photography & Videography</li>
                 <li>✅ Custom Party Favors</li>
               </ul>
-              <p className="card-price">$1200</p>
+              <p className="card-price" style={{ marginBottom: "20px" }}>
+                $1200
+              </p>
+              <button className="pay-btn" onClick={() => handlePay(1200)}>
+                Pay Now
+              </button>
             </div>
           </div>
         </div>

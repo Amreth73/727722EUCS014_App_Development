@@ -93,7 +93,8 @@
 
 .card-title {
   font-size: 1.5rem;
-  color: #ff6347;
+  /* color: #ff6347; */
+  color: rgb(44, 186, 44);
 }
 
 .card-description {
@@ -144,10 +145,14 @@
 }
 
 .recent-works-heading {
+  height: 200px;
+  background-color: #333;
   text-align: center;
   font-size: 2rem;
-  color: #ff6347; /* Adjust the color as per your design */
-  margin-bottom: 20px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .recent-works-gallery {
@@ -188,4 +193,12 @@
 
 .recent-work-item:hover .recent-work-text {
   transform: translateY(0);
+}
+.pay-btn {
+  font-family: "Noto Sans", sans-serif;
+  background-color: rgb(38, 204, 38);
+  height: 50px;
+}
+.pay-btn:hover {
+  background-color: rgb(13, 177, 13);
 }

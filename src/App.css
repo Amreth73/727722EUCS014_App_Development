@@ -86,10 +86,11 @@ body {
 }
 
 #logins {
-  background-image: url("./images/login.png");
+  /* background-image: url("./images/login.png"); */
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
+  position: relative;
 }
 
 /* Dropdown styling */
@@ -126,3 +127,19 @@ body {
 .dropdown button:hover {
   background-color: #444;
 }
+body {
+  position: relative;
+}
+/* .back {
+  right: 0;
+  bottom: 0;
+  } */
+/* .vid {
+  position: absolute; */
+/* z-index: -21; */
+/* left: 0; */
+/* } */
+/* .contain {
+  background-color: white; */
+/* display: none; */
+/* } */

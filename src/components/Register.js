@@ -4,29 +4,31 @@ import { Input, InputGroup, InputRightElement } from "@chakra-ui/input";
 import { VStack } from "@chakra-ui/layout";
 import { useToast } from "@chakra-ui/toast";
 import { useState } from "react";
+import axios from "axios";
 
 const Register = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
 
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [confirmpassword, setConfirmpassword] = useState();
-  const [password, setPassword] = useState();
-  const [pic, setPic] = useState();
-  const [picLoading, setPicLoading] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmpassword, setConfirmpassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [pic, setPic] = useState("");
+  // const [picLoading, setPicLoading] = useState(false);
 
   const submitHandler = async () => {
-    setPicLoading(true);
+    // setPicLoading(true);
     if (!name || !email || !password || !confirmpassword) {
       toast({
-        title: "Please Fill all the Feilds",
+        title: "Please Fill all the Fields",
         status: "warning",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
+      // setPicLoading(false);
       return;
     }
     if (password !== confirmpassword) {
@@ -37,7 +39,7 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      setPicLoading(false);
+      // setPicLoading(false);
       return;
     }
     if (password.length < 8) {
@@ -48,10 +50,19 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      setPicLoading(false);
+      // setPicLoading(false);
       return;
     }
+
+    const userDetails = {
+      name,
+      email,
+      password,
+      confirmpassword,
+    };
+
     try {
+      await axios.post("http://localhost:8080/users", userDetails);
       toast({
         title: "Registration Successful, Kindly login",
         status: "success",
@@ -65,60 +76,15 @@ const Register = () => {
       setConfirmpassword("");
     } catch (error) {
       toast({
-        title: "Error Occured!",
+        title: "Error Occurred!",
         status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
-      setPicLoading(false);
+    } finally {
+      // setPicLoading(false);
     }
-    console.log(`${name} ${email} ${password} ${confirmpassword}`);
-  };
-
-  const postDetails = (pics) => {
-    // setPicLoading(true);
-    // if (pics === undefined) {
-    //   toast({
-    //     title: "Please Select an Image!",
-    //     status: "warning",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: "bottom",
-    //   });
-    //   return;
-    // }
-    // console.log(pics);
-    // if (pics.type === "image/jpeg" || pics.type === "image/png") {
-    //   const data = new FormData();
-    //   data.append("file", pics);
-    //   data.append("upload_preset", "chat-app");
-    //   data.append("cloud_name", "piyushproj");
-    //   fetch("https://api.cloudinary.com/v1_1/piyushproj/image/upload", {
-    //     method: "post",
-    //     body: data,
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       setPic(data.url.toString());
-    //       console.log(data.url.toString());
-    //       setPicLoading(false);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       setPicLoading(false);
-    //     });
-    // } else {
-    //   toast({
-    //     title: "Please Select an Image!",
-    //     status: "warning",
-    //     duration: 5000,
-    //     isClosable: true,
-    //     position: "bottom",
-    //   });
-    //   setPicLoading(false);
-    //   return;
-    // }
   };
 
   return (
@@ -127,6 +93,7 @@ const Register = () => {
         <FormLabel>Name</FormLabel>
         <Input
           placeholder="Enter Your Name"
+          _placeholder={{ color: "white" }}
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
@@ -136,6 +103,7 @@ const Register = () => {
         <Input
           type="email"
           placeholder="Enter Your Email Address"
+          _placeholder={{ color: "white" }}
           onChange={(e) => setEmail(e.target.value)}
           value={email}
         />
@@ -146,6 +114,7 @@ const Register = () => {
           <Input
             type={show ? "text" : "password"}
             placeholder="Enter Password"
+            _placeholder={{ color: "white" }}
             onChange={(e) => setPassword(e.target.value)}
             value={password}
           />
@@ -162,6 +131,7 @@ const Register = () => {
           <Input
             type={show ? "text" : "password"}
             placeholder="Confirm password"
+            _placeholder={{ color: "white" }}
             onChange={(e) => setConfirmpassword(e.target.value)}
             value={confirmpassword}
           />
@@ -177,7 +147,7 @@ const Register = () => {
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
-        isLoading={picLoading}
+        // isLoading={picLoading}
       >
         Sign Up
       </Button>
