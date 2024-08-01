@@ -33,6 +33,9 @@ import Dashboardcontent from "./Admin/Dashboardcontent";
 import Venuecontent from "./Admin/Venuecontent";
 import Revenuecontent from "./Admin/RevenuContent";
 import Eventcontent from "./Admin/Eventcontent";
+import ManageDates from "./components/ManageDates";
+
+import Lottie from "lottie-react";
 function App() {
   const venues = [
     {
@@ -40,6 +43,7 @@ function App() {
       name: "Grand Ballroom",
       location: "123 Celebration Ave, Party City",
       capacity: "500 guests",
+      charges: "5000",
       amenities: [
         "Free Wi-Fi",
         "Catering services",
@@ -64,6 +68,7 @@ function App() {
       location: "456 Party Blvd, Fun City",
       capacity: "300 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "4500",
       images: [
         "https://png.pngtree.com/thumb_back/fw800/background/20230720/pngtree-luxurious-and-elegant-hall-brought-to-life-with-3d-rendering-image_3665452.jpg",
         "https://bookwedgo-prod.s3.amazonaws.com/Mandapam%20Images/NSK%20The%20Grand%20Space/Interior/temp_maTCdaq.jpg",
@@ -81,6 +86,7 @@ function App() {
       location: "Kovaipudur, Tamil Nadu 641042",
       capacity: "200 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "3000",
       images: [
         "https://content.jdmagicbox.com/v2/comp/bangalore/u7/080pxx80.xx80.210319134121.n5u7/catalogue/anugraha-party-hall-gandhi-bazar-bangalore-banquet-halls-07w91n7sh3.jpg",
         "https://content.jdmagicbox.com/comp/coimbatore/w3/0422px422.x422.200315115526.d9w3/catalogue/anugraha-party-hall-kovaipudur-coimbatore-wcqpo75avy.jpg",
@@ -98,6 +104,7 @@ function App() {
       location: "Saravanampatti, Coimbatore",
       capacity: "250 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "5000",
       images: [
         "https://content.jdmagicbox.com/comp/coimbatore/s5/0422px422.x422.190526190541.u6s5/catalogue/flames-party-halls-saravanampatti-coimbatore-banquet-halls-10xzl8rux4.jpg",
         "https://lh3.googleusercontent.com/pUxdVStZmbN0-xq4x0XWwIQNlErrow4BA1M21jxzNr664ugj_qLy1rNt9Q-6WEcbKbi4XKgx2lHTcxapPV_jn1su=w1082-h971-n-l80-e31",
@@ -115,6 +122,7 @@ function App() {
       location: "Gopalapuram, Coimbatore",
       capacity: "100 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "2500",
       images: [
         "https://thevendry.com/cdn-cgi/image/width=3840,quality=75,fit=contain,metadata=none,format=auto/https%3A%2F%2Fs3.us-east-1.amazonaws.com%2Fuploads.thevendry.co%2F24986%2F1668696870511_66407258_2745314985485818_1243513626283737088_n.jpg",
         "https://www.goaweddingvenues.com/uploads/venue/venue_pic/58_234_venue_Taj_Vivanta_Panaji-_Tango.jpg",
@@ -132,6 +140,7 @@ function App() {
       location: "Havelock Road, Ooty",
       capacity: "350 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "5500",
       images: [
         "https://media.licdn.com/dms/image/C561BAQGSmQTKy0-rqA/company-background_10000/0/1585483902872/the_monarch_hospitality_cover?e=2147483647&v=beta&t=KRxq5ApzUnQ33Zlf3oUZBrSStABsMcd6Jmek2Lxwzjc",
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/365228334.jpg?k=86cf85f794a243b0fcd1b54d0b198659dfebe5c97912807ea370a7d0c0aa0140&o=&hp=1",
@@ -148,6 +157,7 @@ function App() {
       location: "Sathyamangal Road Chamarajanag, Chamarajanagar",
       capacity: "200 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "3000",
       images: [
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/178807920.jpg?k=e083af767aab298ef022884eb1a1ea0ff21442a2b952fce21a653411fbe476e9&o=&hp=1",
         "https://content.jdmagicbox.com/comp/def_content_category/oyo/325483467-711062344081841-6825451248260770675-n-oyo-8-h1pbf.jpg",
@@ -165,6 +175,7 @@ function App() {
       location: "Kodaikanal",
       capacity: "300 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "4900",
       images: [
         "https://www.venuescanner.com/_next/image?url=https%3A%2F%2Fcdn.venuescanner.com%2Fphotos%2FlVOgL%2Fb04ca62ff0d23620005ffcd302f00e1c.jpg&w=3840&q=75",
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/379468731.jpg?k=20f9e7b22c15cb3de72e28c46125d2fa88f633dcbc7b6908b5ddf316a54aa1c3&o=&hp=1",
@@ -181,6 +192,7 @@ function App() {
       location: "Kodaikanal",
       capacity: "400 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "3900",
       images: [
         "https://www.tierneyphotography.co.uk/cache/uploads/blog/2498/1-100_1180_831_90.jpg",
         "https://carlton-park-sheffield.yorkshire-hotel.com/data/Pics/OriginalPhoto/14090/1409021/1409021039/carlton-park-hotel-sheffield-rotherham-pic-37.JPEG",
@@ -198,6 +210,7 @@ function App() {
       location: "Anachal, Idukki",
       capacity: "500 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "5000",
       images: [
         "https://cdn0.weddingwire.in/vendor/6315/3_2/1280/jpg/resorts-destination-weddings-the-lead-munnar-swimming-pool-14_15_366315-162127396148579.jpeg",
         "https://cf.bstatic.com/xdata/images/hotel/max1024x768/277578161.jpg?k=0a592d1fade6ed7e529faccb2df736016d438a41515dce6b8763df0bf4c05c76&o=&hp=1",
@@ -214,6 +227,7 @@ function App() {
       location: "Azhinjilam, Kozhikode",
       capacity: "300 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "5500",
       images: [
         "https://www.keralatourism.org/uploads/destination-wedding/images/large/raviz-kadavu-10000-20230601052613499600.jpg",
         "https://www.keralatourism.org/uploads/destination-wedding/banquet_hall/large/rcc-kadavu-20230601053325201842.jpeg",
@@ -231,6 +245,7 @@ function App() {
       location: "Pinangode, Wayanad",
       capacity: "200 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "4800",
       images: [
         "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202201191646049062-a31787a2c16611ec93720a58a9feac02.jpg",
         "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202201191646049062-9a0e67a0c16811ecb3f40a58a9feac02.jpg",
@@ -247,6 +262,7 @@ function App() {
       location: "Kadamattam, Ernakulam",
       capacity: "300 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "5100",
       images: [
         "https://edenweddingplanner.com/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-12-at-12.02.21.jpeg",
         "https://edenconventioncentre.com/images/8.jpg",
@@ -263,6 +279,7 @@ function App() {
       location: "Kakkanad, Ernakulam",
       capacity: "350 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "6000",
       images: [
         "https://content3.jdmagicbox.com/comp/def_content/banquet-halls/banquet-halls-2-banquet-halls-15-iuu57.jpg",
         "https://hirespace.imgix.net/spaces/165018/h10553thi5l.jpg?q=20&auto=format",
@@ -280,6 +297,7 @@ function App() {
       location: "Manjoora, Wayanad",
       capacity: "300 guests",
       amenities: ["DJ Services", "Lighting", "Dance Floor"],
+      charges: "3000",
       images: [
         "https://eventsmanagementkerala.com/wp-content/uploads/elementor/thumbs/taj-wayanad-qkgiactm35qmz7y75mia2x1edqri72ugbj5oxzferg.jpg",
         "https://cdn.sanity.io/images/ocl5w36p/production/9edb96c20ad68fa3211944f1b19ccefdcb8833e0-640x880.jpg?w=480&auto=format&dpr=2",
@@ -319,6 +337,9 @@ function App() {
             <Route path="/venue" element={<Homes venues={venues} />} />
             <Route path="/venue/:id" element={<Venue venues={venues} />} />
             <Route path="/admin" element={<TestAdmin />} />
+
+            <Route path="/venue/:id" element={<Venue venues={venues} />} />
+            <Route path="/date-management/:id" element={<ManageDates />} />
 
             <Route path="/orders" element={<Ordercontent />} />
             <Route path="/dashboard" element={<Dashboardcontent />} />

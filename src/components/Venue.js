@@ -1,10 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ImageSlideShow from "./ImageSlideShow";
 import "./venue.css";
 
+import { usePrice } from "../day3/PriceProvider";
+import { color } from "framer-motion";
+
 const Venue = ({ venues }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const { setPrice } = usePrice();
   const venue = venues.find((v) => v.id === id);
 
   if (!venue) {
@@ -16,11 +21,17 @@ const Venue = ({ venues }) => {
     location,
     capacity,
     amenities,
+    charges,
     images,
     contact,
     website,
     description,
   } = venue;
+
+  const handleDateManagementClick = () => {
+    setPrice(charges);
+    navigate(`/date-management/${id}`);
+  };
 
   return (
     <div className="venue">
@@ -31,7 +42,6 @@ const Venue = ({ venues }) => {
       <p>
         <strong>Capacity:</strong> {capacity}
       </p>
-
       <div className="venue-details">
         <h2>Details</h2>
         <p>
@@ -47,7 +57,6 @@ const Venue = ({ venues }) => {
           </a>
         </p>
       </div>
-
       <p>
         <strong>Amenities:</strong>
       </p>
@@ -56,10 +65,28 @@ const Venue = ({ venues }) => {
           <li key={index}>{amenity}</li>
         ))}
       </ul>
-
+      <p>
+        <span className="detail-label">Charges: </span>
+        {charges}
+      </p>
       <div className="venue-images">
         <ImageSlideShow images={images} />
       </div>
+      <button
+        onClick={handleDateManagementClick}
+        style={{
+          backgroundColor: "#ff6347", // Tomato color
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          padding: "10px 20px",
+          cursor: "pointer",
+          fontSize: "16px",
+          marginTop: "20px",
+        }}
+      >
+        Manage Dates
+      </button>
     </div>
   );
 };

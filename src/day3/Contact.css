@@ -54,7 +54,7 @@ h3 {
   font-size: 0.9em;
 }
 
-button {
+.contactbtn {
   padding: 10px 20px;
   background-color: #ff6347;
   /* background-color: #ff4081; */
@@ -65,8 +65,8 @@ button {
   transition: background-color 0.3s;
 }
 
-button:hover {
-  background-color: #ff6347;
+.contactbtn:hover {
+  background-color: #e83414;
   /* background-color: #e73370; */
 }
 

@@ -70,6 +70,7 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
+      console.log("Resetting form fields");
       setName("");
       setEmail("");
       setPassword("");
@@ -82,8 +83,6 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-    } finally {
-      // setPicLoading(false);
     }
   };
 
@@ -125,7 +124,7 @@ const Register = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <FormControl id="password" isRequired>
+      <FormControl id="password-confirm" isRequired>
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input

@@ -40,11 +40,12 @@ const Home = () => {
 
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
+    "./dine7.png",
     "./dine1.png",
     "./dine2.png",
-    "./dine3.png",
     "./dine4.png",
     "./dine5.png",
+    "./dine8.jpg",
   ];
 
   useEffect(() => {
@@ -82,7 +83,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <div id="whole-home" style={{ color: "yellow" }}>
       <Navbar />
       <div>
         <div
@@ -283,7 +284,7 @@ const Home = () => {
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 };
 

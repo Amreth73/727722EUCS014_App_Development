@@ -3,21 +3,42 @@ import "./loginadmin.css";
 import { useNavigate } from "react-router-dom";
 import Log from "./loginPage.json";
 import Lottie from "lottie-react";
+import axios from "axios";
 const LoginAdmin = () => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     // Simple validation for demonstration
-    if (username === "" || password === "") {
+    if (email === "" || password === "") {
       setError("Both fields are required.");
       return;
     }
     setError("");
-    // Handle login logic here
-    alert("Logged in successfully!");
+
+    try {
+      const response = axios.get("http://localhost:8080/users");
+      const user = (await response).data;
+      console.log(user);
+      const userd = user.find(
+        (user) => user.email === email && user.password === password
+      );
+
+      // if (userd) {
+      //   navigate("/admin-page");
+      // }
+      if (email == "admin@gmail.com" && password == "12345678") {
+        // navigate("/admin-page");
+        navigate("/dashboard");
+      } else {
+        console.log("Error amreth");
+      }
+    } catch (e) {
+      console.error("Error message" + e);
+      return;
+    }
   };
   return (
     <div className="admin">
@@ -30,9 +51,9 @@ const LoginAdmin = () => {
             <input
               type="text"
               id="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              placeholder="Enter your username"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
             />
           </div>
           <div className="input-group">
@@ -49,7 +70,7 @@ const LoginAdmin = () => {
           <button
             type="submit"
             className="login-button"
-            onClick={() => navigate("/admin-page")}
+            onClick={(e) => handleLogin(e)}
           >
             Login
           </button>

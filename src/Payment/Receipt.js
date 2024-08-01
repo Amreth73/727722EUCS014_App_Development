@@ -1,8 +1,11 @@
 import React from "react";
 import "./Reciept.css";
+
+import { usePrice } from "../day3/PriceProvider";
 import { useLocation, useNavigate } from "react-router-dom";
 
 const Receipt = () => {
+  const { price } = usePrice();
   const now = new Date();
   const options = { month: "short", day: "2-digit", year: "numeric" };
   const currentDate = now.toLocaleDateString("en-US", options);
@@ -15,7 +18,7 @@ const Receipt = () => {
   return (
     <div className="rec-who">
       <div className="receipt-container">
-        <h2>Payment Receipt</h2>
+        <h2 style={{ color: "black" }}>Payment Receipt</h2>
         <div className="receipt">
           <div className="receipt-header">
             <h3 style={{ color: "black" }}>Receipt ID: #{recid}</h3>
@@ -37,7 +40,7 @@ const Receipt = () => {
             </div>
             <div className="receipt-item">
               <span>Total Amount:</span>
-              <span>${receipt.amount}</span>
+              <span>${price}</span>
             </div>
           </div>
         </div>
@@ -45,6 +48,7 @@ const Receipt = () => {
           className="btns"
           onClick={() => {
             navigate("/");
+            console.log(receipt);
           }}
         >
           Return to home page

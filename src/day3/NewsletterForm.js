@@ -7,7 +7,7 @@ const NewsletterForm = () => (
       <input type="email" placeholder="Mail" />
       <button type="submit">Subscribe</button>
     </form>
-    <p>
+    <p style={{ color: "white" }}>
       Feel free to place your Mail_ID and Subscribe to our Newsletter here. So
       that, you can receive our exciting Updates and Offers with no wait!
     </p>

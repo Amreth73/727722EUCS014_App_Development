@@ -1,6 +1,7 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import emailjs from "emailjs-com";
 
 const ContactForm = () => {
   const initialValues = {
@@ -20,9 +21,19 @@ const ContactForm = () => {
   });
 
   const onSubmit = (values, { resetForm }) => {
-    console.log("Form data", values);
-    alert("Your message has been sent!");
-    resetForm();
+    emailjs
+      .send("service_kbgstfl", "template_kru1ayh", values, "Dh9ifKdepF57DT0Wn")
+      .then(
+        (response) => {
+          console.log("Success:", response);
+          alert("Your message has been sent!");
+          resetForm();
+        },
+        (error) => {
+          console.error("Error:", error);
+          alert("Failed to send message. Please try again.");
+        }
+      );
   };
 
   return (
@@ -44,10 +55,10 @@ const ContactForm = () => {
           </div>
           <div className="form-group">
             <Field
-              type="text"
+              type="number"
               id="website"
-              name="website"
-              placeholder="Website"
+              name="number"
+              placeholder="Mobile number"
             />
             <ErrorMessage name="website" component="div" className="error" />
           </div>
@@ -60,7 +71,9 @@ const ContactForm = () => {
             />
             <ErrorMessage name="message" component="div" className="error" />
           </div>
-          <button type="submit">Send</button>
+          <button type="submit" className="contactbtn">
+            Send
+          </button>
         </Form>
       </Formik>
     </div>

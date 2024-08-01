@@ -1,3 +1,12 @@
 {
-  "users": []
+  "users": {
+    "name": "gowtham",
+    "email": "gowtham@gmail.com",
+    "password": "json-server --watch db.json --port 8080",
+    "confirmpassword": "json-server --watch db.json --port 8080"
+  },
+  "admin": {
+    "email": "admin@gmail.com",
+    "password": "admin123"
+  }
 }

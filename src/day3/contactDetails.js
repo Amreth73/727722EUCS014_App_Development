@@ -12,8 +12,7 @@ const ContactDetails = () => (
     </p>
     <p>Phone: +91 98414 18847</p>
     <p>
-      Email:{" "}
-      <a href="mailto:727722eucs036@skcet.ac.in">partyperfect@gmail.com</a>
+      Email: <a href="mailto:amreth73@gmail.com">partyperfect@gmail.com</a>
     </p>
     <p>Business Hours:</p>
     <p>Monday - Friday: 8am to 6pm</p>
