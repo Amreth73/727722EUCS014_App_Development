@@ -30,7 +30,8 @@ const Venue = ({ venues }) => {
 
   const handleDateManagementClick = () => {
     setPrice(charges);
-    navigate(`/date-management/${id}`);
+    // navigate(`/date-management/${id}`);
+    navigate(`/date-management/${id}?venueName=${encodeURIComponent(name)}`);
   };
 
   return (

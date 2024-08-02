@@ -8,19 +8,19 @@ import axios from "axios";
 
 const Register = () => {
   const [show, setShow] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [confirmPassword, setConfirmpassword] = useState("");
+  const [password, setPassword] = useState("");
+  const [pic, setPic] = useState("");
+  const [picLoading, setPicLoading] = useState(false); // Uncommented
+
   const handleClick = () => setShow(!show);
   const toast = useToast();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
-  const [password, setPassword] = useState("");
-  const [pic, setPic] = useState("");
-  // const [picLoading, setPicLoading] = useState(false);
-
   const submitHandler = async () => {
-    // setPicLoading(true);
-    if (!name || !email || !password || !confirmpassword) {
+    setPicLoading(true); // Added loading state handling
+    if (!name || !email || !password || !confirmPassword) {
       toast({
         title: "Please Fill all the Fields",
         status: "warning",
@@ -28,10 +28,10 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      // setPicLoading(false);
+      setPicLoading(false);
       return;
     }
-    if (password !== confirmpassword) {
+    if (password !== confirmPassword) {
       toast({
         title: "Passwords Do Not Match",
         status: "warning",
@@ -39,7 +39,7 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      // setPicLoading(false);
+      setPicLoading(false);
       return;
     }
     if (password.length < 8) {
@@ -50,19 +50,14 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      // setPicLoading(false);
+      setPicLoading(false);
       return;
     }
 
-    const userDetails = {
-      name,
-      email,
-      password,
-      confirmpassword,
-    };
+    const userDetails = { name, email, password, confirmPassword };
 
     try {
-      await axios.post("http://localhost:8080/users", userDetails);
+      await axios.post("http://localhost:5000/login/enter", userDetails);
       toast({
         title: "Registration Successful, Kindly login",
         status: "success",
@@ -70,25 +65,26 @@ const Register = () => {
         isClosable: true,
         position: "bottom",
       });
-      console.log("Resetting form fields");
       setName("");
       setEmail("");
       setPassword("");
       setConfirmpassword("");
     } catch (error) {
+      const errorMessage = error.response?.data?.message || "Error Occurred!";
       toast({
-        title: "Error Occurred!",
+        title: errorMessage,
         status: "error",
         duration: 5000,
         isClosable: true,
         position: "bottom",
       });
     }
+    setPicLoading(false); // Reset loading state
   };
 
   return (
     <VStack spacing="5px">
-      <FormControl id="first-name" isRequired>
+      <FormControl id="name" isRequired>
         <FormLabel>Name</FormLabel>
         <Input
           placeholder="Enter Your Name"
@@ -124,15 +120,15 @@ const Register = () => {
           </InputRightElement>
         </InputGroup>
       </FormControl>
-      <FormControl id="password-confirm" isRequired>
+      <FormControl id="confirmpassword" isRequired>
         <FormLabel>Confirm Password</FormLabel>
         <InputGroup size="md">
           <Input
             type={show ? "text" : "password"}
-            placeholder="Confirm password"
+            placeholder="Confirm Password"
             _placeholder={{ color: "white" }}
             onChange={(e) => setConfirmpassword(e.target.value)}
-            value={confirmpassword}
+            value={confirmPassword}
           />
           <InputRightElement width="4.5rem">
             <Button h="1.75rem" size="sm" onClick={handleClick}>
@@ -146,7 +142,7 @@ const Register = () => {
         width="100%"
         style={{ marginTop: 15 }}
         onClick={submitHandler}
-        // isLoading={picLoading}
+        isLoading={picLoading} // Added loading state handling
       >
         Sign Up
       </Button>

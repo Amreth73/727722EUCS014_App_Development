@@ -35,13 +35,12 @@ const LoginPage = () => {
     //   // navigate("/");
     // } catch (error) {}
     try {
-      const response = axios.get("http://localhost:8080/users");
+      const response = axios.get(`http://localhost:5000/login/check/${email}`);
       const user = (await response).data;
       console.log(user);
       const userd = user.find(
         (user) => user.email === email && user.password === password
       );
-
       if (userd) {
         toast({
           title: "Login Successful",
@@ -64,7 +63,7 @@ const LoginPage = () => {
       }
     } catch (e) {
       toast({
-        title: "Error Occured!",
+        title: "Wrong Information!",
         description: e.response.data.message,
         status: "error",
         duration: 5000,
@@ -125,7 +124,7 @@ const LoginPage = () => {
             width="100%"
             onClick={() => {
               setEmail("guest@example.com");
-              setPassword("123456");
+              setPassword("12345678");
             }}
           >
             Get Guest User Credentials
